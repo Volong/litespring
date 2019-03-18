@@ -1,11 +1,13 @@
 package org.litespring.test.v1;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.litespring.beans.BeanDefinition;
 import org.litespring.beans.factory.BeanCreationException;
 import org.litespring.beans.factory.BeanDefinitionStoreException;
 import org.litespring.beans.factory.BeanFactory;
+import org.litespring.beans.factory.xml.XmlBeanDefinitionReader;
 import org.litespring.beans.support.DefaultBeanFactory;
 import org.litespring.service.v1.PetStoreService;
 
@@ -13,12 +15,26 @@ import org.litespring.service.v1.PetStoreService;
 
 public class BeanFactoryTest {
 
+	DefaultBeanFactory beanFactory;
+
+	XmlBeanDefinitionReader reader;
+
+	/**
+	 * 每个测试用例运行之前都会运行这个方法
+	 */
+	@Before
+	public void setUp() {
+		beanFactory = new DefaultBeanFactory();
+
+		reader = new XmlBeanDefinitionReader(beanFactory);
+	}
+
 	@Test
 	public void testGetBean() {
-		
-		// 加载配置文件
-		BeanFactory beanFactory = new DefaultBeanFactory("petstore-v1.xml");
-		
+
+		// 通过 XML 解析器去加载配置文件
+		reader.loadBeanDefinition("petstore-v1.xml");
+
 		// 获取 Bean 的定义
 		BeanDefinition beanDefinition = beanFactory.getBeanDefinition("petStore");
 
@@ -33,9 +49,9 @@ public class BeanFactoryTest {
 	
 	@Test(expected = BeanCreationException.class)
 	public void testInvalidBean() {
-		
-		BeanFactory beanFactory = new DefaultBeanFactory("petstore-v1.xml");
-		
+
+		reader.loadBeanDefinition("petstore-v1.xml");
+
 		beanFactory.getBean("invalidBean");
 		
 		Assert.fail("expect BeanCreationException");
@@ -43,9 +59,9 @@ public class BeanFactoryTest {
 	
 	@Test(expected = BeanDefinitionStoreException.class)
 	public void testInvalidXml() {
-		
-		new DefaultBeanFactory("xxx.xml");
-		
+
+		reader.loadBeanDefinition("xxx.xml");
+
 	}
 
 }
