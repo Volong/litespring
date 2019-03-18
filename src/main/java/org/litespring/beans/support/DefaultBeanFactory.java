@@ -17,7 +17,7 @@ import org.litespring.utils.ClassUtils;
 
 public class DefaultBeanFactory implements BeanFactory {
 
-	private final Map<String, BeanDefinition> beanDefinitonMap = new ConcurrentHashMap<>();
+	private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
 	
 	public DefaultBeanFactory(String configFile) {
 		loadBeanDefinition(configFile);
@@ -39,7 +39,7 @@ public class DefaultBeanFactory implements BeanFactory {
 				String id = next.attributeValue("id");
 				String className = next.attributeValue("class");
 				BeanDefinition bd = new GenericBeanDefinition(id, className);
-				beanDefinitonMap.put(id, bd);
+				beanDefinitionMap.put(id, bd);
 			}
 			
 		} catch (DocumentException e) {
@@ -49,12 +49,12 @@ public class DefaultBeanFactory implements BeanFactory {
 
 	@Override
 	public BeanDefinition getBeanDefinition(String beanId) {
-		return beanDefinitonMap.get(beanId);
+		return beanDefinitionMap.get(beanId);
 	}
 
 	@Override
 	public Object getBean(String beanId) {
-		BeanDefinition beanDefinition = beanDefinitonMap.get(beanId);
+		BeanDefinition beanDefinition = beanDefinitionMap.get(beanId);
 		
 		if (beanDefinition == null) {
 			throw new BeanCreationException("Bean Definition does not exist");
