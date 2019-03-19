@@ -51,17 +51,10 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry {
 		try {
 			Class<?> loadClass = defaultClassLoader.loadClass(beanClassName);
 			return loadClass.newInstance();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 		
 	}

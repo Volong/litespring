@@ -8,8 +8,10 @@ import org.litespring.beans.BeanDefinition;
 import org.litespring.beans.factory.BeanDefinitionStoreException;
 import org.litespring.beans.support.BeanDefinitionRegistry;
 import org.litespring.beans.support.GenericBeanDefinition;
+import org.litespring.core.io.Resource;
 import org.litespring.utils.ClassUtils;
 
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Iterator;
 
@@ -24,13 +26,11 @@ public class XmlBeanDefinitionReader {
         this.registry = registry;
     }
 
-    public void loadBeanDefinition(String configFile) {
+    public void loadBeanDefinition(Resource resource) {
 
         try {
-            ClassLoader defaultClassLoader = ClassUtils.getDefaultClassLoader();
-            InputStream is = defaultClassLoader.getResourceAsStream(configFile);
             SAXReader saxReader = new SAXReader();
-            Document doc = saxReader.read(is);
+            Document doc = saxReader.read(resource.getInputStream());
             Element root = doc.getRootElement();
 
             Iterator<Element> elementIterator = root.elementIterator();
@@ -43,7 +43,7 @@ public class XmlBeanDefinitionReader {
                 this.registry.registerBeanDefinition(id, bd);
             }
 
-        } catch (DocumentException e) {
+        } catch (DocumentException | FileNotFoundException e) {
             throw new BeanDefinitionStoreException("parsing xml document error", e);
         }
     }
