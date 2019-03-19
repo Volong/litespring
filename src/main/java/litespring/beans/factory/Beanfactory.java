@@ -1,4 +1,6 @@
-package litespring.factory.support;
+package litespring.beans.factory;
+
+import litespring.beans.BeanDefinition;
 
 public interface Beanfactory {
 

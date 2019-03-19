@@ -2,9 +2,9 @@ package org.litespring.test.v1;
 
 import org.junit.Assert;
 import org.junit.Test;
-import litespring.factory.support.BeanDefinition;
-import litespring.factory.support.Beanfactory;
-import litespring.factory.support.DefaultBeanFactory;
+import litespring.beans.BeanDefinition;
+import litespring.beans.factory.Beanfactory;
+import litespring.beans.factory.support.DefaultBeanFactory;
 import org.litespring.service.v1.PetStoreService;
 
 
@@ -17,7 +17,7 @@ public class BeanFactoryTest {
 
         BeanDefinition definition = factory.getBeanDefinition("petStore");
 
-        Assert.assertNotNull(definition);
+        Assert.assertEquals("org.litespring.service.v1.PetStoreService", definition.getBeanClassName());
 
         PetStoreService petStore = (PetStoreService) factory.getBean("petStore");
 

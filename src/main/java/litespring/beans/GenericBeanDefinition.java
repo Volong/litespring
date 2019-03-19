@@ -1,4 +1,6 @@
-package litespring.factory.support;
+package litespring.beans;
+
+import litespring.beans.BeanDefinition;
 
 public class GenericBeanDefinition implements BeanDefinition {
 
@@ -25,5 +27,10 @@ public class GenericBeanDefinition implements BeanDefinition {
 
     public void setClassName(String className) {
         this.className = className;
+    }
+
+    @Override
+    public String getBeanClassName() {
+        return this.className;
     }
 }
