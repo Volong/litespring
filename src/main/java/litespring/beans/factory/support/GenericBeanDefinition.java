@@ -1,4 +1,4 @@
-package litespring.beans;
+package litespring.beans.factory.support;
 
 import litespring.beans.BeanDefinition;
 

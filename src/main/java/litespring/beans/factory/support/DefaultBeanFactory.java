@@ -1,8 +1,9 @@
 package litespring.beans.factory.support;
 
 import litespring.beans.BeanDefinition;
-import litespring.beans.GenericBeanDefinition;
 import litespring.beans.factory.Beanfactory;
+import litespring.beans.factory.BeansCreationException;
+import litespring.beans.factory.BeansDefinitionStoreException;
 import litespring.utils.ClassLoaderUtil;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -39,7 +40,7 @@ public class DefaultBeanFactory implements Beanfactory {
 
             }
         } catch (DocumentException e) {
-            e.printStackTrace();
+            throw new BeansDefinitionStoreException("IOException parsing xml document");
         }
     }
 
@@ -52,17 +53,15 @@ public class DefaultBeanFactory implements Beanfactory {
     public Object getBean(String beanId) {
         GenericBeanDefinition beanDefinition = (GenericBeanDefinition) beanMaps.get(beanId);
 
+        if (beanDefinition == null) {
+            throw  new BeansCreationException("Bean Definition does not exist");
+        }
         String className = beanDefinition.getClassName();
 
         try {
             return ClassLoaderUtil.getClassLoader().loadClass(className).newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new BeansCreationException("create bean for " + className, e);
         }
-        return null;
     }
 }

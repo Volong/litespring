@@ -1,4 +1,5 @@
 
-1. 通过名称读取并解析 XML 配置文件
-2. 将解析的结果放入到 Map 中进行保存
-3. 获取 Bean 的定义及相关信息
+
+规范 Bean 创建过程中的异常
+
+![BeansException](images/BeansException.jpg)
