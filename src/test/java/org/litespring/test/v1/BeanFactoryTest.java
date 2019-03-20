@@ -1,10 +1,10 @@
 package org.litespring.test.v1;
 
-import org.junit.Assert;
-import org.junit.Test;
 import litespring.beans.BeanDefinition;
 import litespring.beans.factory.Beanfactory;
 import litespring.beans.factory.support.DefaultBeanFactory;
+import org.junit.Assert;
+import org.junit.Test;
 import org.litespring.service.v1.PetStoreService;
 
 

@@ -1,7 +1,6 @@
 package litespring.beans.factory.support;
 
 import litespring.beans.BeanDefinition;
-import litespring.beans.GenericBeanDefinition;
 import litespring.beans.factory.Beanfactory;
 import litespring.utils.ClassLoaderUtil;
 import org.dom4j.Document;
