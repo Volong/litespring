@@ -10,6 +10,9 @@ SRP 对于一个类而言，应该仅有一个引起它变化的原因。
 
 
 原先 `DefaultBeanFactory` 具有两个职责：
-
 - 解析 XML 生成 `BeanDefinition` 实例
 - 通过反射创建 `Bean` 的实例
+
+改造后的类图如下所示：
+
+![](images/BeanFactory.jpg)
