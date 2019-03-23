@@ -1,8 +1,8 @@
-package org.litespring.context.support;
+package litespring.context.support;
 
 import litespring.beans.factory.support.DefaultBeanFactory;
 import litespring.beans.factory.xml.XMLBeanDefinitionReader;
-import org.litespring.context.ApplicationContext;
+import litespring.context.ApplicationContext;
 
 public class ClassPathXmlApplicationContext implements ApplicationContext {
 

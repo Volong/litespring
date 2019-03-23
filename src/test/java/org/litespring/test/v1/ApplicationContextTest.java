@@ -2,11 +2,9 @@ package org.litespring.test.v1;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.litespring.context.ApplicationContext;
-import org.litespring.context.support.ClassPathXmlApplicationContext;
+import litespring.context.ApplicationContext;
+import litespring.context.support.ClassPathXmlApplicationContext;
 import org.litespring.service.v1.PetStoreService;
-
-import java.time.Period;
 
 public class ApplicationContextTest {
 
