@@ -9,5 +9,5 @@ import org.junit.runners.Suite;
         BeanFactoryTest.class
 })
 public class V1AllTests {
-    
+
 }
