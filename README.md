@@ -1,3 +1,3 @@
-通过 `ApplicationContext` 来获取类路径下或者系统文件路径下的 XML 文件。
+将 `ClassPathXmlApplicationContext` 与 `FileSystemXmlApplicationContext` 类中的公共部分抽取到一个抽象类中。
 
-![](images/ApplicationContext.jpg)
+![](images/AbstractApplicationContext.jpg)

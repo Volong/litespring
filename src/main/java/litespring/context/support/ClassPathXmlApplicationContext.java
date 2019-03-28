@@ -6,19 +6,15 @@ import litespring.beans.factory.support.DefaultBeanFactory;
 import litespring.beans.factory.xml.XMLBeanDefinitionReader;
 import litespring.context.ApplicationContext;
 
-public class ClassPathXmlApplicationContext implements ApplicationContext {
-
-    DefaultBeanFactory factory;
+public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
 
     public ClassPathXmlApplicationContext(String path) {
-        factory = new DefaultBeanFactory();
-        XMLBeanDefinitionReader reader = new XMLBeanDefinitionReader(factory);
-        Resource resource = new ClassPathResource(path);
-        reader.loadBeanDefinition(resource);
+        super(path);
     }
 
     @Override
-    public Object getBean(String beanId) {
-        return factory.getBean(beanId);
+    protected Resource getResourceByPath(String path) {
+        return new ClassPathResource(path);
     }
+
 }
