@@ -3,7 +3,7 @@ package litespring.beans.core.io;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class FileSystemResource implements Resource {
@@ -15,7 +15,7 @@ public class FileSystemResource implements Resource {
     }
 
     @Override
-    public InputStream getInputStream() throws FileNotFoundException {
+    public InputStream getInputStream() throws IOException {
         return new FileInputStream(file);
     }
 }

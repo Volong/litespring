@@ -1,6 +1,7 @@
 package org.litespring.test.v1;
 
 import litespring.beans.BeanDefinition;
+import litespring.beans.core.io.ClassPathResource;
 import litespring.beans.factory.BeansCreationException;
 import litespring.beans.factory.BeansDefinitionStoreException;
 import litespring.beans.factory.support.DefaultBeanFactory;
@@ -27,7 +28,7 @@ public class BeanFactoryTest {
     @Test
     public void testGetBean() {
 
-        reader.loadBeanDefinition("petstore-v1.xml");
+        reader.loadBeanDefinition(new ClassPathResource("petstore-v1.xml"));
 
         BeanDefinition bd = factory.getBeanDefinition("petStore");
 
@@ -42,14 +43,14 @@ public class BeanFactoryTest {
     @Test(expected = BeansCreationException.class)
     public void testInvalidBean() {
 
-        reader.loadBeanDefinition("petstore-v1.xml");
+        reader.loadBeanDefinition(new ClassPathResource("petstore-v1.xml"));
 
         factory.getBean("invalidBean");
     }
 
     @Test(expected = BeansDefinitionStoreException.class)
     public void testInvalidXml() {
-        reader.loadBeanDefinition("xxx.xml");
+        reader.loadBeanDefinition(new ClassPathResource("xxx.xml"));
     }
 
 }

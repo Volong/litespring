@@ -1,8 +1,8 @@
 package litespring.beans.core.io;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
 public interface Resource {
-    InputStream getInputStream() throws FileNotFoundException;
+    InputStream getInputStream() throws IOException;
 }

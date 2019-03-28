@@ -6,13 +6,13 @@ import litespring.beans.core.io.Resource;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class ResourceTest {
 
     @Test
-    public void testClassPathResource() throws FileNotFoundException {
+    public void testClassPathResource() throws IOException {
 
         Resource classPathResource = new ClassPathResource("petstore-v1.xml");
         InputStream is = classPathResource.getInputStream();
@@ -21,7 +21,7 @@ public class ResourceTest {
     }
 
     @Test
-    public void testFileSystemResource() throws FileNotFoundException {
+    public void testFileSystemResource() throws IOException {
 
         Resource fileSystemResource = new FileSystemResource("C:\\workspace\\litespring\\src\\test\\resources\\petstore-v1.xml");
         InputStream inputStream = fileSystemResource.getInputStream();

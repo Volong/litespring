@@ -2,6 +2,7 @@ package litespring.beans.core.io;
 
 import litespring.utils.ClassLoaderUtil;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 public class ClassPathResource implements Resource {
@@ -20,7 +21,7 @@ public class ClassPathResource implements Resource {
     }
 
     @Override
-    public InputStream getInputStream() {
+    public InputStream getInputStream() throws IOException {
         return classLoader.getResourceAsStream(path);
     }
 }
