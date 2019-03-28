@@ -1,3 +1,3 @@
-抽取公共资源加载接口，以及添加通过系统文件路径来获取配置文件。
+通过 `ApplicationContext` 来获取类路径下或者系统文件路径下的 XML 文件。
 
-![](images/resource.jpg)
+![](images/ApplicationContext.jpg)
